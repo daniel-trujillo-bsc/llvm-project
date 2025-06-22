@@ -2050,6 +2050,7 @@ struct FinalizeMemRefToLLVMConversionPass
                                                    &symbolTables);
     LLVMConversionTarget target(getContext());
     target.addLegalOp<func::FuncOp>();
+    target.addLegalOp<arith::ConstantOp>();
     if (failed(applyPartialConversion(op, target, std::move(patterns))))
       signalPassFailure();
   }
